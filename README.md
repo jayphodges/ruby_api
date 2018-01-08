@@ -1,24 +1,38 @@
-# README
+### Ruby Goldberg Machine API
+ A docker deployable Rails API serving the most common names from the census from 2000.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Prerequisites to Run Locally
 
-Things you may want to cover:
+  * [Docker](www.docker.com)
 
-* Ruby version
+### Running Locally
 
-* System dependencies
+  * Clone this repo.
+  * ```docker-compose build```
+  * ```docker-compose up```
+  * visit ```localhost:8080```
 
-* Configuration
+### Visit Online
 
-* Database creation
+ * Launch on - [Github Pages](www.jayphodges.com)
 
-* Database initialization
+## Authors
 
-* How to run the test suite
+* **Jay P Hodges** - [Github](https://github.com/jayphodges)
 
-* Services (job queues, cache servers, search engines, etc.)
+## Acknowledgments
 
-* Deployment instructions
+* Turing School of Software & Design
 
-* ...
+## API available
+
+* Endpoints
+  * "/api/v1/name/:name"
+
+### Built With
+
+ * Rails, Ruby, Postgresql, and Docker.
+
+### Contributing
+
+ * Want to contribute? Please feel free to contact me.
