@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'admin'
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+  app:
+    build: .
+    command: bash -c "rake db:drop && rake db:setup && rails server -b '0.0.0.0'"
+    environment:
+      - POSTGRESQL_HOST=postgres
+      - POSTGRESQL_PASSWORD=admin
+      - POSTGRESQL_USERNAME=admin
+    links:
+      - postgres
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8080:3000"
+    depends_on:
+      - postgres
+volumes:
+  postgres: {}
