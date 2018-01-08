@@ -14,7 +14,7 @@ require 'csv'
 names = []
 time = Time.now
 CSV.foreach('lib/seeds/NationalNames2000.csv', headers: true) do |row|
-  names << Name.new(row.to_h)
+  Name.create(row.to_h)
 end
 Name.import(names)
 puts "Imported #{Name.count} in #{(Time.now - time).round(2)}"
