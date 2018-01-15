@@ -1,6 +1,6 @@
 require 'csv'
 time1 = Time.now
-CSV.foreach('lib/seeds/test.csv', headers: true) do |row|
+CSV.foreach('lib/seeds/NationalNames2000.csv', headers: true) do |row|
   Name.create(row.to_h)
 end
 puts "Imported #{Name.count} in #{(Time.now - time1).round(2)}"
