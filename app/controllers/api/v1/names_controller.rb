@@ -1,12 +1,14 @@
 class Api::V1::NamesController < ApplicationController
-  before_action :set_name
+  # before_action :set_name
 
   def show
+    @name = params[:name].capitalize
     render json: Name.chart_return(@name)
   end
 
   def index
-    render json: @combined
+    @year = params[:year]
+    render json: Name.top_by_year(@year)
   end
 
   private

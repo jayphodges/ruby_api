@@ -18,6 +18,10 @@ class Name < ApplicationRecord
     combined = {male: hash1, female: hash2}
   end
 
+  def self.top_by_year(year)
+    Name.where(year: year).order(count: :desc).limit(5)
+  end
+
   def format(data)
     binding.pry
     hash = {2000 => 0, 2001 => 0, 2002 => 0, 2003 => 0,
