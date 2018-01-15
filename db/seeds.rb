@@ -1,24 +1,12 @@
 require 'csv'
-# require 'pry'
-# require_relative '../../app/models/name.rb'
-# def load_data
-  # data = File.read('lib/seeds/NationalNames2000.csv')
-  # # binding.pry
-  # # data = File.read(Rails.root.join('lib', 'seeds', 'test.csv'))
-  # csv = CSV.parse(data, :headers => true)
-  # csv.each do |row|
-  #   Name.create!(row.to_hash)
-  #   puts "#{row} #{Name.count}"
-  # end
-
-names = []
-time = Time.now
-CSV.foreach('lib/seeds/NationalNames2000.csv', headers: true) do |row|
+time1 = Time.now
+CSV.foreach('lib/seeds/test.csv', headers: true) do |row|
   Name.create(row.to_h)
 end
-Name.import(names)
-puts "Imported #{Name.count} in #{(Time.now - time).round(2)}"
-
-# end
-#
-# load_data
+puts "Imported #{Name.count} in #{(Time.now - time1).round(2)}"
+time2 = Time.now
+CSV.foreach('lib/seeds/StateNamesAK2000.csv', headers: true) do |row|
+  State.create(row.to_h)
+end
+puts "Imported #{State.count} in #{(Time.now - time2).round(2)}"
+puts "Imported #{Name.count} in #{(Time.now - time2).round(2)}"
