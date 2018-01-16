@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/name/:name', to: 'names#show'
-      get '/name/year/:year', to: 'names#index'
+      get '/year/:name', to: 'names#index'
+      get '/name/year/:year', to: 'years#show'
       get '/year/:year', to: 'years#show'
     end
   end

@@ -19,7 +19,11 @@ class Name < ApplicationRecord
   end
 
   def self.top_by_year(year)
-    Name.where(year: year).order(count: :desc).limit(5)
+    Name.where(year: year).order(count: :desc).limit(5).pluck(:name, :count)
+  end
+
+  def self.top_years(name)
+    Name.where(name: name).order(count: :desc).limit(5).pluck(:year, :count)
   end
 
   def format(data)

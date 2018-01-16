@@ -1,8 +1,9 @@
 class Api::V1::YearsController < ApplicationController
-  before_action :set_year
+  # before_action :set_year
 
   def show
-    render json: @year
+    @year = params[:year]
+    render json: Name.top_by_year(@year)
   end
 
   private
