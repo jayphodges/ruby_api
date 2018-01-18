@@ -15,11 +15,11 @@ class State < ApplicationRecord
     female.each do |value|
       hash2[value[0]] = value[1]
     end
-    combined = {male: hash1, female: hash2}
+    combined = {male: hash1.values, female: hash2.values}
   end
 
   def self.most_popular(name)
-    State.where(name: name).order(count: :desc).limit(5).pluck(:count, :state, :year)
+    State.where(name: name).order(count: :desc).limit(10).pluck(:count, :state, :year)
   end
 
 end

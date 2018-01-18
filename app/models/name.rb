@@ -15,15 +15,15 @@ class Name < ApplicationRecord
     female.each do |value|
       hash2[value[0]] = value[1]
     end
-    combined = {male: hash1, female: hash2}
+    combined = {male: hash1.values, female: hash2.values}
   end
 
   def self.top_by_year(year)
-    Name.where(year: year).order(count: :desc).limit(5).pluck(:name, :count)
+    Name.where(year: year).order(count: :desc).limit(10).pluck(:name, :count)
   end
 
   def self.top_years(name)
-    Name.where(name: name).order(count: :desc).limit(5).pluck(:year, :count)
+    Name.where(name: name).order(count: :desc).limit(10).pluck(:year, :count)
   end
 
   def format(data)
