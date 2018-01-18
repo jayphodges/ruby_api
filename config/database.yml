@@ -14,22 +14,22 @@
 # Configure Using Gemfile
 # gem 'pg'
 
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  schema_search_path: partitioning,public
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
 # default: &default
 #   adapter: postgresql
 #   encoding: unicode
+#   schema_search_path: partitioning,public
+#   # For details on connection pooling, see Rails configuration guide
+#   # http://guides.rubyonrails.org/configuring.html#database-pooling
 #   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   host: <%= ENV.fetch('POSTGRESQL_HOST', 'localhost') %>
-#   password: 'admin'
-#   username: 'admin'
-#
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch('POSTGRESQL_HOST', 'localhost') %>
+  password: 'admin'
+  username: 'admin'
+
 development:
   <<: *default
   database: ruby_api_development
